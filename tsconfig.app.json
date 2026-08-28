@@ -19,6 +19,9 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    
+    /* ដាក់វានៅទីនេះ (ស្ថិតក្នុង compilerOptions) */
+    "ignoreDeprecations": "6.0",
 
     /* Linting */
     "strict": true,
