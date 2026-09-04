@@ -18,7 +18,7 @@ const THEME_KEY = 'portfolio-theme';
 const LANG_KEY = 'portfolio-lang';
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+ const [theme, setTheme] = useState<Theme>('light');
   const [lang, setLangState] = useState<Language>('en');
 
   // Initialize from localStorage / system
@@ -26,9 +26,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const storedTheme = localStorage.getItem(THEME_KEY) as Theme | null;
     if (storedTheme === 'dark' || storedTheme === 'light') {
       setTheme(storedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-      setTheme('light');
-    }
+    } 
 
     const storedLang = localStorage.getItem(LANG_KEY) as Language | null;
     if (storedLang === 'en' || storedLang === 'km') {
