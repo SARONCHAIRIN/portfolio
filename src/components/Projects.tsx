@@ -1,3 +1,6 @@
+
+
+
 import { Github, ExternalLink, ArrowUpRight, Star, Smartphone, Layers, Monitor, Tablet } from 'lucide-react';
 import { featuredProject, otherProjects } from '@/data/portfolio';
 import SectionHeading from '@/components/SectionHeading';
@@ -171,20 +174,21 @@ export default function Projects() {
                 </span>
               </div>
               <div
-  className="overflow-hidden rounded-xl"
-  style={{
-    border: '1px solid var(--border)',
-    backgroundColor: 'var(--bg-elevated)',
-  }}
->
-  <video
-    src="/videos/video_project.mp4"
-    controls
-    playsInline
-    preload="metadata"
-    className="h-auto w-full"
-  />
-</div>
+                className="overflow-hidden rounded-xl"
+                style={{
+                  border: '1px solid var(--border)',
+                  backgroundColor: 'var(--bg-elevated)',
+                }}
+              >
+                <video
+                  src="/videos/video_project.mp4"
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
 
             {/* --- Platforms + Technologies --- */}
@@ -267,19 +271,19 @@ export default function Projects() {
               <div className="mt-7 flex flex-col items-center gap-4 sm:grid sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-6">
                 <div className="w-36 sm:w-44">
                   <div
-  className="overflow-hidden rounded-xl"
-  style={{
-    border: '1px solid var(--border)',
-    backgroundColor: 'var(--bg-elevated)',
-  }}
->
-  <img
-    src="/images/projects/e-shop/mobile.png"
-    alt="E-Shop Mobile UI"
-    className="h-auto w-full object-cover"
-    loading="lazy"
-  />
-</div>
+                    className="overflow-hidden rounded-xl"
+                    style={{
+                      border: '1px solid var(--border)',
+                      backgroundColor: 'var(--bg-elevated)',
+                    }}
+                  >
+                    <img
+                      src="/images/projects/e-shop/mobile.png"
+                      alt="E-Shop Mobile UI"
+                      className="h-auto w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex flex-row items-center justify-center gap-3 py-1 text-center sm:flex-col sm:gap-2 sm:py-2">
@@ -310,22 +314,22 @@ export default function Projects() {
                   </span>
                 </div>
 
-               <div className="w-full max-w-md">
-  <div
-    className="overflow-hidden rounded-xl"
-    style={{
-      border: '1px solid var(--border)',
-      backgroundColor: 'var(--bg-elevated)',
-    }}
-  >
-    <img
-      src="/images/projects/e-shop/desktop.png"
-      alt="E-Shop Desktop UI"
-      className="h-auto w-full object-cover"
-      loading="lazy"
-    />
-  </div>
-</div>
+                <div className="w-full max-w-md">
+                  <div
+                    className="overflow-hidden rounded-xl"
+                    style={{
+                      border: '1px solid var(--border)',
+                      backgroundColor: 'var(--bg-elevated)',
+                    }}
+                  >
+                    <img
+                      src="/images/projects/e-shop/desktop.png"
+                      alt="E-Shop Desktop UI"
+                      className="h-auto w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -337,54 +341,88 @@ export default function Projects() {
               >
                 {t.projects.formFactors}
               </p>
-              <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-               {[
-  {
-    label: 'Mobile',
-    Icon: Smartphone,
-    image: '/images/projects/e-shop/bakong_qr.png',
-  },
-  {
-    label: 'Tablet',
-    Icon: Tablet,
-    image: '/images/projects/e-shop/tablet.png',
-  },
-  {
-    label: 'Web',
-    Icon: Monitor,
-    image: '/images/projects/e-shop/web.png',
-  },
-  {
-    label: 'Desktop',
-    Icon: Monitor,
-    image: '/images/projects/e-shop/desktop.png',
-  },
-].map(({ label, Icon, image }) => (
-                  <div key={label} className="group/frm transition-transform duration-300 hover:-translate-y-1">
-                    <div
-                      className="mb-2 flex items-center gap-1.5 text-xs font-medium"
-                      style={{ color: 'var(--text-secondary)' }}
-                    >
-                      <Icon className="h-3.5 w-3.5" style={{ color: 'var(--accent)' }} />
-                      {label}
-                    </div>
-                   <div
-  className="overflow-hidden rounded-xl"
-  style={{
-    border: '1px solid var(--border)',
-    backgroundColor: 'var(--bg-elevated)',
-  }}
->
-  <img
-    src={image}
-    alt={`E-Shop ${label} UI`}
-    className="h-auto w-full object-cover transition-transform duration-500 group-hover/frm:scale-[1.03]"
-    loading="lazy"
-  />
+              
+              {/* Updated grid layout mapping over 'images' arrays */}
+              
+
+
+              {/* --- Form factors: 2 Columns layout --- */}
+<div className="px-5 py-10 sm:px-10" style={{ borderTop: '1px solid var(--border)' }}>
+  <p
+    className="font-mono text-xs uppercase tracking-wider"
+    style={{ color: 'var(--text-muted)' }}
+  >
+    {t.projects.formFactors}
+  </p>
+  
+  {/* Changed from lg:grid-cols-4 to sm:grid-cols-2 for a strict 2-column structure */}
+  <div className="mt-5 grid gap-6 sm:grid-cols-2">
+    {[
+      {
+        label: 'Mobile',
+        Icon: Smartphone,
+        images: [
+          '/images/projects/e-shop/bakong_qr.png',
+        ],
+      },
+      {
+        label: 'Tablet',
+        Icon: Tablet,
+        images: [
+          '/images/projects/e-shop/tablet.png',
+          '/images/projects/e-shop/tablet1.png',
+        ],
+      },
+      {
+        label: 'Desktop',
+        Icon: Monitor,
+        images: [
+          '/images/projects/e-shop/web.png',
+          '/images/projects/e-shop/web1.png',
+        ],
+      },
+      {
+        label: 'Desktop',
+        Icon: Monitor,
+        images: [
+          '/images/projects/e-shop/desktop.png',
+          '/images/projects/e-shop/desktop1.png',
+        ],
+      },
+    ].map(({ label, Icon, images }) => (
+      <div key={label} className="group/frm transition-transform duration-300 hover:-translate-y-1">
+        <div
+          className="mb-2 flex items-center gap-1.5 text-xs font-medium"
+          style={{ color: 'var(--text-secondary)' }}
+        >
+          <Icon className="h-3.5 w-3.5" style={{ color: 'var(--accent)' }} />
+          {label}
+        </div>
+
+        {/* Multiple images stacked inside each column */}
+        <div className="flex flex-col gap-4">
+          {images.map((image, index) => (
+            <div
+              key={image}
+              className="overflow-hidden rounded-xl"
+              style={{
+                border: '1px solid var(--border)',
+                backgroundColor: 'var(--bg-elevated)',
+              }}
+            >
+              <img
+                src={image}
+                alt={`E-Shop ${label} UI ${index + 1}`}
+                className="h-auto w-full object-cover transition-transform duration-500 group-hover/frm:scale-[1.03]"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
 </div>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* --- Actions --- */}

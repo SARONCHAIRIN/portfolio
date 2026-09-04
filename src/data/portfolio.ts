@@ -7,7 +7,7 @@ export const profile = {
   github: 'https://github.com/SARONCHAIRIN',
   githubHandle: 'SARONCHAIRIN',
   linkedin: 'https://www.linkedin.com/',
-  facebook: 'https://www.facebook.com/',
+  facebook: 'https://www.facebook.com/share/19VYefDR3u/',
   email: 'saronchairin@gmail.com',
   resumeUrl: '/resume/CHHAIRIN-SARON-CV.pdf',
 };

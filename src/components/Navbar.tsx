@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Download, Sun, Moon, Globe } from 'lucide-react';
+import { Menu, X, Download, Sun, Moon,Globe  } from 'lucide-react';
 import { navItems, profile } from '@/data/portfolio';
 import { useApp } from '@/context/AppContext';
 

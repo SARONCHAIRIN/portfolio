@@ -105,7 +105,7 @@ export const translations = {
         'Leading the Flutter frontend of a full-featured e-commerce app: authentication, product browsing, cart, address management, order processing and Bakong payment integration across six platforms.',
       m3Title: 'Bachelor of Information Technology — RUPP',
       m3Summary:
-        'Currently in Year 2, Semester 2 at the Royal University of Phnom Penh, applying coursework directly to real Flutter application development.',
+        'Currently in Year 3, Semester 1 at the Royal University of Phnom Penh, applying coursework directly to real Flutter application development.',
       note: 'Based on my CV. No companies, dates or roles invented.',
     },
     education: {
@@ -116,7 +116,7 @@ export const translations = {
       languagesTitle: 'Languages',
       institution: 'Royal University of Phnom Penh',
       degree: 'Bachelor of Information Technology',
-      period: 'Year 2, Semester 2',
+      period: 'Year 3, Semester 1',
       graduation: 'Expected Graduation: 2027',
       khmer: 'Khmer',
       khmerLevel: 'Native',
@@ -248,7 +248,7 @@ export const translations = {
         'ដឹកនាំ Flutter Frontend នៃកម្មវិធី E-Commerce ពេញលក្ខណៈ៖ Authentication ការមើលផលិតផល កន្ត្រក គ្រប់គ្រងអាសយដ្ឋាន ការបញ្ជាទិញ និងការទូទាត់ Bakong លើ 6 Platform។',
       m3Title: 'បរិញ្ញាបត្រផ្នែក IT — RUPP',
       m3Summary:
-        'បច្ចុប្បន្នកំពុងសិក្សាឆមាសទី 2 នៅសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ ដោយអនុវត្តការសិក្សាទៅការបង្កើតកម្មវិធី Flutter ពិតប្រាកដ។',
+        'បច្ចុប្បន្នកំពុងសិក្សាឆមាសទី 1 ឆ្នាំទី 3 នៅសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ ដោយអនុវត្តការសិក្សាទៅការបង្កើតកម្មវិធី Flutter ពិតប្រាកដ។',
       note: 'ផ្អែកលើ CV របស់ខ្ញុំ។ មិនបានបង្កើតក្រុមហ៊ុន កាលបរិច្ឆេទ ឬតួនាទីឡើយ។',
     },
     education: {
@@ -259,7 +259,7 @@ export const translations = {
       languagesTitle: 'ភាសា',
       institution: 'សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ',
       degree: 'បរិញ្ញាបត្រផ្នែក IT',
-      period: 'ឆមាសទី 2 ឆ្នាំទី 2',
+      period: 'ឆមាសទី 1 ឆ្នាំទី 3',
       graduation: 'នឹងបញ្ចប់នាឆ្នាំ 2027',
       khmer: 'ខ្មែរ',
       khmerLevel: 'មាតាសាស្ត្រ',
