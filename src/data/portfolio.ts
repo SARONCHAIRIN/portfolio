@@ -55,12 +55,33 @@ export const skillCategories: SkillCategory[] = [
 
 export const featuredProject = {
   name: 'E-Shop',
-  technologies: ['Flutter', 'Dart', 'REST API', 'JWT', 'Provider', 'Riverpod', 'Spring Boot', 'Git'],
-  platforms: ['Android', 'iOS', 'Web', 'Windows', 'macOS', 'Linux'],
+
+  technologies: [
+    'Flutter',
+    'Dart',
+    'REST API',
+    'JWT',
+    'Provider',
+    'Riverpod',
+    'Spring Boot',
+    'Git',
+  ],
+
+  platforms: [
+    'Android',
+    'iOS',
+    'Web',
+    'Windows',
+    'macOS',
+    'Linux',
+  ],
+
   highlightDetail:
     'The application adapts its interface across different screen sizes and platforms — from compact phone layouts to expansive desktop navigation — while keeping a single Flutter codebase.',
+
   github: 'https://github.com/SARONCHAIRIN/project_e_shop',
-  live: '#',
+
+  live: 'https://eshop-nine-gilt.vercel.app/',
 };
 
 export type OtherProject = {

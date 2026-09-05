@@ -243,95 +243,265 @@ export default function Projects() {
               </ul>
             </div>
 
-            {/* --- Adaptive comparison: Mobile vs Desktop --- */}
-            <div
-              className="px-5 py-10 sm:px-10"
+  {/* --- Adaptive UI Showcase --- */}
+<div
+  className="px-5 py-12 sm:px-10 lg:py-14"
+  style={{
+    borderTop: '1px solid var(--border)',
+    backgroundColor: 'var(--bg-subtle)',
+  }}
+>
+  {/* Header */}
+  <div className="max-w-2xl">
+    <div className="flex items-center gap-2">
+      <div
+        className="flex h-7 w-7 items-center justify-center rounded-lg"
+        style={{
+          backgroundColor: 'var(--accent-bg)',
+          color: 'var(--accent)',
+          border: '1px solid var(--accent-border)',
+        }}
+      >
+        <Smartphone className="h-3.5 w-3.5" />
+      </div>
+
+      <p
+        className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
+        style={{ color: 'var(--text-muted)' }}
+      >
+        Adaptive UI — Same App, Different Screens
+      </p>
+    </div>
+
+    <p
+      className="mt-4 text-sm leading-7 sm:text-[15px]"
+      style={{ color: 'var(--text-secondary)' }}
+    >
+      {featuredProject.highlightDetail}
+    </p>
+  </div>
+
+  {/* Showcase */}
+  <div className="mt-10 grid items-center gap-8 lg:grid-cols-[220px_150px_minmax(0,1fr)]">
+
+    {/* ================= MOBILE ================= */}
+    <div className="flex flex-col items-center">
+      <div className="group relative w-[185px]">
+
+        {/* Phone image */}
+        <div
+          className="relative overflow-hidden rounded-[24px] p-1.5 shadow-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border)',
+          }}
+        >
+          <div className="overflow-hidden rounded-[19px]">
+            <img
+              src="/images/projects/e-shop/mobile.png"
+              alt="E-Shop Mobile UI"
+              className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.04]"
+              loading="lazy"
+            />
+          </div>
+
+          {/* Hover overlay */}
+          <div
+            className="absolute inset-1.5 flex items-center justify-center rounded-[19px] opacity-0 transition-all duration-300 group-hover:opacity-100"
+            style={{
+              backgroundColor: 'rgba(0,0,0,0.38)',
+            }}
+          >
+            <a
+              href={featuredProject.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-lg transition-transform duration-300 hover:scale-105"
               style={{
-                borderTop: '1px solid var(--border)',
-                backgroundColor: 'var(--bg-subtle)',
+                backgroundColor: 'var(--bg-card)',
+                color: 'var(--text-primary)',
               }}
             >
-              <div className="flex flex-wrap items-center gap-2">
-                <Smartphone className="h-4 w-4" style={{ color: 'var(--accent)' }} />
-                <Monitor className="h-4 w-4" style={{ color: 'var(--accent)' }} />
-                <p
-                  className="font-mono text-xs uppercase tracking-wider"
-                  style={{ color: 'var(--text-muted)' }}
-                >
-                  {t.projects.adaptiveTitle}
-                </p>
-              </div>
-              <p
-                className="mt-3 max-w-2xl text-sm leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                {featuredProject.highlightDetail}
-              </p>
+              <ExternalLink className="h-3.5 w-3.5" />
+              View Project
+            </a>
+          </div>
+        </div>
 
-              <div className="mt-7 flex flex-col items-center gap-4 sm:grid sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-6">
-                <div className="w-36 sm:w-44">
-                  <div
-                    className="overflow-hidden rounded-xl"
-                    style={{
-                      border: '1px solid var(--border)',
-                      backgroundColor: 'var(--bg-elevated)',
-                    }}
-                  >
-                    <img
-                      src="/images/projects/e-shop/mobile.png"
-                      alt="E-Shop Mobile UI"
-                      className="h-auto w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
+        {/* Label */}
+        <div className="mt-4 text-center">
+          <p
+            className="text-sm font-semibold"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Mobile
+          </p>
 
-                <div className="flex flex-row items-center justify-center gap-3 py-1 text-center sm:flex-col sm:gap-2 sm:py-2">
-                  <div
-                    className="flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold"
-                    style={{
-                      border: '1px solid var(--accent-border)',
-                      backgroundColor: 'var(--accent-bg)',
-                      color: 'var(--accent-text)',
-                    }}
-                  >
-                    <span>1 codebase</span>
-                  </div>
-                  <div className="flex items-center gap-2" style={{ color: 'var(--accent)' }}>
-                    <span
-                      className="hidden font-mono text-[10px] uppercase tracking-wider sm:block"
-                      style={{ color: 'var(--text-muted)' }}
-                    >
-                      adapts
-                    </span>
-                    <ArrowUpRight className="h-5 w-5" />
-                  </div>
-                  <span
-                    className="font-mono text-[10px] uppercase tracking-wider"
-                    style={{ color: 'var(--text-muted)' }}
-                  >
-                    responsive layout
-                  </span>
-                </div>
+          <p
+            className="mt-1 font-mono text-[10px] uppercase tracking-wider"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            E-Shop Mobile UI
+          </p>
+        </div>
+      </div>
+    </div>
 
-                <div className="w-full max-w-md">
-                  <div
-                    className="overflow-hidden rounded-xl"
-                    style={{
-                      border: '1px solid var(--border)',
-                      backgroundColor: 'var(--bg-elevated)',
-                    }}
-                  >
-                    <img
-                      src="/images/projects/e-shop/desktop.png"
-                      alt="E-Shop Desktop UI"
-                      className="h-auto w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
+    {/* ================= CENTER ================= */}
+    <div className="flex flex-col items-center justify-center">
+      
+      <div
+        className="rounded-full px-4 py-2 text-xs font-semibold"
+        style={{
+          backgroundColor: 'var(--accent-bg)',
+          color: 'var(--accent-text)',
+          border: '1px solid var(--accent-border)',
+        }}
+      >
+        1 codebase
+      </div>
+
+      <div
+        className="my-3 flex items-center gap-2"
+        style={{ color: 'var(--accent)' }}
+      >
+        <div
+          className="h-px w-8"
+          style={{ backgroundColor: 'var(--accent-border)' }}
+        />
+
+        <ArrowUpRight className="h-5 w-5" />
+
+        <div
+          className="h-px w-8"
+          style={{ backgroundColor: 'var(--accent-border)' }}
+        />
+      </div>
+
+      <span
+        className="font-mono text-[10px] font-medium uppercase tracking-[0.16em]"
+        style={{ color: 'var(--text-muted)' }}
+      >
+        responsive layout
+      </span>
+    </div>
+
+    {/* ================= DESKTOP ================= */}
+    <div className="w-full">
+      <div className="group">
+
+        {/* Browser frame */}
+        <div
+          className="overflow-hidden rounded-2xl shadow-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border)',
+          }}
+        >
+          {/* Browser header */}
+          <div
+            className="flex h-9 items-center gap-2 px-3"
+            style={{
+              borderBottom: '1px solid var(--border)',
+              backgroundColor: 'var(--bg-elevated)',
+            }}
+          >
+            <span
+              className="h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: 'var(--border-strong)' }}
+            />
+            <span
+              className="h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: 'var(--border-strong)' }}
+            />
+            <span
+              className="h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: 'var(--border-strong)' }}
+            />
+
+            <div
+              className="ml-2 flex h-5 flex-1 items-center rounded-md px-3 font-mono text-[9px]"
+              style={{
+                backgroundColor: 'var(--bg-subtle)',
+                color: 'var(--text-muted)',
+              }}
+            >
+              eshop-nine-gilt.vercel.app
             </div>
+          </div>
+
+          {/* Screenshot */}
+          <div className="relative overflow-hidden">
+            <img
+              src="/images/projects/e-shop/desktop.png"
+              alt="E-Shop Desktop UI"
+              className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.025]"
+              loading="lazy"
+            />
+
+            {/* Hover overlay */}
+            <div
+              className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+              style={{
+                backgroundColor: 'rgba(0,0,0,0.42)',
+              }}
+            >
+              <a
+                href={featuredProject.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-xl transition-all duration-300 hover:scale-105"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  color: 'var(--text-primary)',
+                  border: '1px solid var(--border)',
+                }}
+              >
+                <ExternalLink className="h-4 w-4" />
+                View Live Project
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Label */}
+        <div className="mt-4 flex items-center justify-between">
+          <div>
+            <p
+              className="text-sm font-semibold"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              Desktop
+            </p>
+
+            <p
+              className="mt-1 font-mono text-[10px] uppercase tracking-wider"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              E-Shop Desktop UI
+            </p>
+          </div>
+
+          <a
+            href={featuredProject.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              backgroundColor: 'var(--accent-bg)',
+              color: 'var(--accent-text)',
+              border: '1px solid var(--accent-border)',
+            }}
+          >
+            View
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
             {/* --- Smaller screenshots: Mobile / Tablet / Web / Desktop --- */}
             <div className="px-5 py-10 sm:px-10" style={{ borderTop: '1px solid var(--border)' }}>
@@ -439,10 +609,15 @@ export default function Projects() {
                 <Github className="h-4 w-4" />
                 {t.projects.viewGithub}
               </a>
-              <a href={featuredProject.live} className="btn-ghost w-full sm:w-auto">
-                <ExternalLink className="h-4 w-4" />
-                {t.projects.viewProject}
-              </a>
+              <a
+  href={featuredProject.live}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-ghost w-full sm:w-auto"
+>
+  <ExternalLink className="h-4 w-4" />
+  {t.projects.viewProject}
+</a>
               <span
                 className="ml-auto hidden font-mono text-[11px] sm:block lg:ml-auto"
                 style={{ color: 'var(--text-muted)' }}
