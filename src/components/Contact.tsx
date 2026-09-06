@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import { Send, Github, Linkedin, Facebook, Mail, MapPin, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import {
+  Send,
+  Github,
+  Linkedin,
+  Facebook,
+  Mail,
+  MapPin,
+  CheckCircle2,
+} from 'lucide-react';
 import { profile } from '@/data/portfolio';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -7,14 +16,66 @@ import { useApp } from '@/context/AppContext';
 
 export default function Contact() {
   const { t } = useApp();
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
+
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setSent(false), 4000);
+
+    setSending(true);
+    setSent(false);
+    setError(false);
+
+    try {
+      const time = new Date().toLocaleString();
+
+      await emailjs.send(
+        'service_portfolio',
+        'template_2ugi9s4',
+        {
+          name: form.name,
+          email: form.email,
+          time: time,
+          message: form.message,
+        },
+        {
+          publicKey: 'VL_SpTE6K1BE4ZZPS',
+        }
+      );
+
+      // Success
+      setSent(true);
+
+      // Clear form
+      setForm({
+        name: '',
+        email: '',
+        message: '',
+      });
+
+      // Hide success message after 4 seconds
+      setTimeout(() => {
+        setSent(false);
+      }, 4000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setError(true);
+
+      // Hide error after 5 seconds
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
+    } finally {
+      setSending(false);
+    }
   };
 
   const fieldStyle: React.CSSProperties = {
@@ -29,7 +90,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-pad" style={{ backgroundColor: 'var(--bg-subtle)' }}>
+    <section
+      id="contact"
+      className="section-pad"
+      style={{ backgroundColor: 'var(--bg-subtle)' }}
+    >
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -63,6 +128,7 @@ export default function Contact() {
                 >
                   <Mail className="h-5 w-5" />
                 </div>
+
                 <div className="min-w-0">
                   <p
                     className="font-mono text-xs uppercase tracking-wider"
@@ -70,6 +136,7 @@ export default function Contact() {
                   >
                     {t.contact.email}
                   </p>
+
                   <p
                     className="truncate text-sm font-medium"
                     style={{ color: 'var(--text-primary)' }}
@@ -90,6 +157,7 @@ export default function Contact() {
                 >
                   <MapPin className="h-5 w-5" />
                 </div>
+
                 <div>
                   <p
                     className="font-mono text-xs uppercase tracking-wider"
@@ -97,6 +165,7 @@ export default function Contact() {
                   >
                     {t.contact.location}
                   </p>
+
                   <p
                     className="text-sm font-medium"
                     style={{ color: 'var(--text-primary)' }}
@@ -113,11 +182,20 @@ export default function Contact() {
                 >
                   {t.contact.social}
                 </p>
+
                 <div className="mt-3 flex gap-3">
                   {[
                     { href: profile.github, label: 'GitHub', Icon: Github },
-                    { href: profile.linkedin, label: 'LinkedIn', Icon: Linkedin },
-                    { href: profile.facebook, label: 'Facebook', Icon: Facebook },
+                    {
+                      href: profile.linkedin,
+                      label: 'LinkedIn',
+                      Icon: Linkedin,
+                    },
+                    {
+                      href: profile.facebook,
+                      label: 'Facebook',
+                      Icon: Facebook,
+                    },
                   ].map(({ href, label, Icon }) => (
                     <a
                       key={label}
@@ -131,12 +209,15 @@ export default function Contact() {
                         color: 'var(--text-secondary)',
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--accent-border)';
+                        e.currentTarget.style.borderColor =
+                          'var(--accent-border)';
                         e.currentTarget.style.color = 'var(--accent-text)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--border-strong)';
-                        e.currentTarget.style.color = 'var(--text-secondary)';
+                        e.currentTarget.style.borderColor =
+                          'var(--border-strong)';
+                        e.currentTarget.style.color =
+                          'var(--text-secondary)';
                       }}
                     >
                       <Icon className="h-5 w-5" />
@@ -149,7 +230,10 @@ export default function Contact() {
 
           {/* Form */}
           <Reveal delay={160}>
-            <form onSubmit={onSubmit} className="card-surface p-5 sm:p-6 lg:p-7">
+            <form
+              onSubmit={onSubmit}
+              className="card-surface p-5 sm:p-6 lg:p-7"
+            >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label
@@ -159,16 +243,20 @@ export default function Contact() {
                   >
                     {t.contact.name}
                   </label>
+
                   <input
                     id="name"
                     type="text"
                     required
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value })
+                    }
                     placeholder={t.contact.namePlaceholder}
                     style={fieldStyle}
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="email"
@@ -177,17 +265,21 @@ export default function Contact() {
                   >
                     {t.contact.emailLabel}
                   </label>
+
                   <input
                     id="email"
                     type="email"
                     required
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
                     placeholder={t.contact.emailPlaceholder}
                     style={fieldStyle}
                   />
                 </div>
               </div>
+
               <div className="mt-4">
                 <label
                   htmlFor="message"
@@ -196,22 +288,35 @@ export default function Contact() {
                 >
                   {t.contact.message}
                 </label>
+
                 <textarea
                   id="message"
                   required
                   rows={5}
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
                   placeholder={t.contact.messagePlaceholder}
                   style={{ ...fieldStyle, resize: 'none' }}
                 />
               </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
-                <button type="submit" className="btn-primary w-full sm:w-auto">
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="btn-primary w-full sm:w-auto"
+                  style={{
+                    opacity: sending ? 0.7 : 1,
+                    cursor: sending ? 'not-allowed' : 'pointer',
+                  }}
+                >
                   <Send className="h-4 w-4" />
-                  {t.contact.send}
+
+                  {sending ? 'Sending...' : t.contact.send}
                 </button>
+
                 {sent && (
                   <span
                     className="flex items-center gap-1.5 text-sm font-medium"
@@ -219,6 +324,15 @@ export default function Contact() {
                   >
                     <CheckCircle2 className="h-4 w-4" />
                     {t.contact.sent}
+                  </span>
+                )}
+
+                {error && (
+                  <span
+                    className="text-sm font-medium"
+                    style={{ color: '#ef4444' }}
+                  >
+                    Failed to send message. Please try again.
                   </span>
                 )}
               </div>
