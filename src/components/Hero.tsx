@@ -85,13 +85,13 @@ export default function Hero() {
                 <ArrowUpRight className="h-4 w-4" />
               </a>
               <a
-  href={profile.resumeUrl}
-  download="CHHAIRIN-SARON-CV.pdf"
-  className="btn-ghost w-full sm:w-auto"
->
-  <Download className="h-4 w-4" />
-  {t.hero.downloadResume}
-</a>
+                href={profile.resumeUrl}
+                download="CHHAIRIN-SARON-CV.pdf"
+                className="btn-ghost w-full sm:w-auto"
+              >
+                <Download className="h-4 w-4" />
+                {t.hero.downloadResume}
+              </a>
             </div>
 
             <div
@@ -147,12 +147,15 @@ export default function Hero() {
             <div className="relative">
               {/* Decorative glow behind image */}
               <div
-                className="pointer-events-none absolute -inset-6 rounded-[2rem] blur-2xl"
+                className="pointer-events-none absolute -inset-6 rounded-full blur-2xl"
+
                 style={{ backgroundColor: 'var(--accent-bg)' }}
               />
 
+
               {/* Decorative code-bracket watermark */}
               <span
+
                 className="pointer-events-none absolute -left-4 top-4 select-none font-mono text-2xl font-bold opacity-20"
                 style={{ color: 'var(--accent)' }}
               >
@@ -167,10 +170,10 @@ export default function Hero() {
 
               {/* Image container */}
               <div
-                className="relative overflow-hidden rounded-2xl"
+                className="relative overflow-hidden rounded-full"
                 style={{
-                  width: 'clamp(260px, 70vw, 420px)',
-                  aspectRatio: '3 / 4',
+                  width: 'clamp(280px, 60vw, 400px)',
+                  height: 'clamp(280px, 60vw, 400px)',
                   border: '2px solid var(--accent-border)',
                   boxShadow:
                     '0 0 0 1px var(--border), 0 20px 50px -12px rgba(0,0,0,0.3), 0 0 30px -5px var(--accent-bg)',
@@ -181,17 +184,11 @@ export default function Hero() {
                   src={PROFILE_IMAGE_URL}
                   alt="CHHAIRIN SARON - Flutter Developer"
                   className="h-full w-full object-cover"
+                  style={{
+                    objectPosition: 'center 20%',
+                  }}
                   loading="eager"
                   decoding="async"
-                />
-                {/* Subtle bottom gradient for depth */}
-                <div
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-                  style={{
-                    background:
-                      'linear-gradient(to top, var(--bg-card), transparent)',
-                    opacity: 0.4,
-                  }}
                 />
               </div>
 
