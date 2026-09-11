@@ -75,6 +75,8 @@ export default function Projects() {
   const { t } = useApp();
 
   return (
+
+    
     <section id="projects" className="section-pad">
       <div className="container-page">
         <Reveal>
@@ -157,6 +159,112 @@ export default function Projects() {
               </div>
             </div>
 
+            <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {otherProjects.map((p, i) => (
+              <Reveal key={p.name} delay={i * 100}>
+                <div
+                  className="card-surface group flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    border: '1px solid var(--border)',
+                    backgroundColor: 'var(--bg-card)',
+                  }}
+                >
+                  {/* --- Image / Preview Top Section --- */}
+                  <div className="relative h-48 w-full overflow-hidden bg-[var(--bg-elevated)] border-b border-[var(--border)]">
+                    {p.image ? (
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center font-mono text-xs text-[var(--text-muted)]">
+                        {p.name} Preview
+                      </div>
+                    )}
+                    {p.tagLabel && (
+                      <div
+                        className="absolute top-3 left-3 rounded-md px-2 py-1 font-mono text-[10px] shadow"
+                        style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
+                      >
+                        &lt;/{p.tagLabel}&gt;
+                      </div>
+                    )}
+                  </div>
+
+                  {/* --- Card Body --- */}
+                  <div className="flex flex-1 flex-col p-6">
+                    <h4
+                      className="text-lg font-bold"
+                      style={{ color: 'var(--text-primary)' }}
+                    >
+                      {p.name}
+                    </h4>
+                    <p
+                      className="mt-2 flex-1 text-sm leading-relaxed"
+                      style={{ color: 'var(--text-secondary)' }}
+                    >
+                      {p.description}
+                    </p>
+
+                    {/* Tech Stack Tags */}
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {p.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-md px-2 py-0.5 font-mono text-[11px]"
+                          style={{
+                            backgroundColor: 'var(--bg-elevated)',
+                            color: 'var(--text-muted)',
+                            border: '1px solid var(--border)',
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* --- Action Buttons (Code & Demo / Swagger) --- */}
+                    <div className="mt-6 grid grid-cols-2 gap-3 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
+                      {p.github ? (
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:opacity-90"
+                          style={{
+                            backgroundColor: 'var(--bg-elevated)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border)',
+                          }}
+                        >
+                          <Github className="h-4 w-4" />
+                          Code
+                        </a>
+                      ) : (
+                        <div />
+                      )}
+
+                      <a
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:opacity-90 ${!p.github ? 'col-span-2' : ''}`}
+                        style={{
+                          backgroundColor: 'var(--accent)',
+                          color: '#fff',
+                        }}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        {p.name.includes('API') ? 'Swagger' : 'Demo'}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
             {/* --- Large hero screenshot --- */}
             <div className="px-5 pt-8 sm:px-10">
               <div className="mb-2 flex items-center justify-between">
@@ -228,6 +336,8 @@ export default function Projects() {
               </div>
             </div>
 
+            
+
             {/* --- Features grid --- */}
             <div className="px-5 py-10 sm:px-10" style={{ borderTop: '1px solid var(--border)' }}>
               <p
@@ -243,265 +353,267 @@ export default function Projects() {
               </ul>
             </div>
 
-  {/* --- Adaptive UI Showcase --- */}
-<div
-  className="px-5 py-12 sm:px-10 lg:py-14"
-  style={{
-    borderTop: '1px solid var(--border)',
-    backgroundColor: 'var(--bg-subtle)',
-  }}
->
-  {/* Header */}
-  <div className="max-w-2xl">
-    <div className="flex items-center gap-2">
-      <div
-        className="flex h-7 w-7 items-center justify-center rounded-lg"
-        style={{
-          backgroundColor: 'var(--accent-bg)',
-          color: 'var(--accent)',
-          border: '1px solid var(--accent-border)',
-        }}
-      >
-        <Smartphone className="h-3.5 w-3.5" />
-      </div>
-
-      <p
-        className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
-        style={{ color: 'var(--text-muted)' }}
-      >
-        Adaptive UI — Same App, Different Screens
-      </p>
-    </div>
-
-    <p
-      className="mt-4 text-sm leading-7 sm:text-[15px]"
-      style={{ color: 'var(--text-secondary)' }}
-    >
-      {featuredProject.highlightDetail}
-    </p>
-  </div>
-
-  {/* Showcase */}
-  <div className="mt-10 grid items-center gap-8 lg:grid-cols-[220px_150px_minmax(0,1fr)]">
-
-    {/* ================= MOBILE ================= */}
-    <div className="flex flex-col items-center">
-      <div className="group relative w-[185px]">
-
-        {/* Phone image */}
-        <div
-          className="relative overflow-hidden rounded-[24px] p-1.5 shadow-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl"
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-          }}
-        >
-          <div className="overflow-hidden rounded-[19px]">
-            <img
-              src="/images/projects/e-shop/mobile.png"
-              alt="E-Shop Mobile UI"
-              className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.04]"
-              loading="lazy"
-            />
-          </div>
-
-          {/* Hover overlay */}
-          <div
-            className="absolute inset-1.5 flex items-center justify-center rounded-[19px] opacity-0 transition-all duration-300 group-hover:opacity-100"
-            style={{
-              backgroundColor: 'rgba(0,0,0,0.38)',
-            }}
-          >
-            <a
-              href={featuredProject.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-lg transition-transform duration-300 hover:scale-105"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                color: 'var(--text-primary)',
-              }}
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-              View Project
-            </a>
-          </div>
-        </div>
-
-        {/* Label */}
-        <div className="mt-4 text-center">
-          <p
-            className="text-sm font-semibold"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            Mobile
-          </p>
-
-          <p
-            className="mt-1 font-mono text-[10px] uppercase tracking-wider"
-            style={{ color: 'var(--text-muted)' }}
-          >
-            E-Shop Mobile UI
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* ================= CENTER ================= */}
-    <div className="flex flex-col items-center justify-center">
-      
-      <div
-        className="rounded-full px-4 py-2 text-xs font-semibold"
-        style={{
-          backgroundColor: 'var(--accent-bg)',
-          color: 'var(--accent-text)',
-          border: '1px solid var(--accent-border)',
-        }}
-      >
-        1 codebase
-      </div>
-
-      <div
-        className="my-3 flex items-center gap-2"
-        style={{ color: 'var(--accent)' }}
-      >
-        <div
-          className="h-px w-8"
-          style={{ backgroundColor: 'var(--accent-border)' }}
-        />
-
-        <ArrowUpRight className="h-5 w-5" />
-
-        <div
-          className="h-px w-8"
-          style={{ backgroundColor: 'var(--accent-border)' }}
-        />
-      </div>
-
-      <span
-        className="font-mono text-[10px] font-medium uppercase tracking-[0.16em]"
-        style={{ color: 'var(--text-muted)' }}
-      >
-        responsive layout
-      </span>
-    </div>
-
-    {/* ================= DESKTOP ================= */}
-    <div className="w-full">
-      <div className="group">
-
-        {/* Browser frame */}
-        <div
-          className="overflow-hidden rounded-2xl shadow-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl"
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-          }}
-        >
-          {/* Browser header */}
-          <div
-            className="flex h-9 items-center gap-2 px-3"
-            style={{
-              borderBottom: '1px solid var(--border)',
-              backgroundColor: 'var(--bg-elevated)',
-            }}
-          >
-            <span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: 'var(--border-strong)' }}
-            />
-            <span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: 'var(--border-strong)' }}
-            />
-            <span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: 'var(--border-strong)' }}
-            />
-
+            {/* --- Adaptive UI Showcase --- */}
             <div
-              className="ml-2 flex h-5 flex-1 items-center rounded-md px-3 font-mono text-[9px]"
+              className="px-5 py-12 sm:px-10 lg:py-14"
               style={{
+                borderTop: '1px solid var(--border)',
                 backgroundColor: 'var(--bg-subtle)',
-                color: 'var(--text-muted)',
               }}
             >
-              eshop-nine-gilt.vercel.app
+              {/* Header */}
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-2">
+                  <div
+                    className="flex h-7 w-7 items-center justify-center rounded-lg"
+                    style={{
+                      backgroundColor: 'var(--accent-bg)',
+                      color: 'var(--accent)',
+                      border: '1px solid var(--accent-border)',
+                    }}
+                  >
+                    <Smartphone className="h-3.5 w-3.5" />
+                  </div>
+
+                  <p
+                    className="font-mono text-xs font-semibold uppercase tracking-[0.15em]"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    Adaptive UI — Same App, Different Screens
+                  </p>
+                </div>
+
+                <p
+                  className="mt-4 text-sm leading-7 sm:text-[15px]"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  {featuredProject.highlightDetail}
+                </p>
+              </div>
+
+              {/* Showcase */}
+              <div className="mt-10 grid items-center gap-8 lg:grid-cols-[220px_150px_minmax(0,1fr)]">
+
+                {/* ================= MOBILE ================= */}
+                <div className="flex flex-col items-center">
+                  <div className="group relative w-[185px]">
+
+                    {/* Phone image */}
+                    <div
+                      className="relative overflow-hidden rounded-[24px] p-1.5 shadow-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl"
+                      style={{
+                        backgroundColor: 'var(--bg-card)',
+                        border: '1px solid var(--border)',
+                      }}
+                    >
+                      <div className="overflow-hidden rounded-[19px]">
+                        <img
+                          src="/images/projects/e-shop/mobile.png"
+                          alt="E-Shop Mobile UI"
+                          className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.04]"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Hover overlay */}
+                      <div
+                        className="absolute inset-1.5 flex items-center justify-center rounded-[19px] opacity-0 transition-all duration-300 group-hover:opacity-100"
+                        style={{
+                          backgroundColor: 'rgba(0,0,0,0.38)',
+                        }}
+                      >
+                        <a
+                          href={featuredProject.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold shadow-lg transition-transform duration-300 hover:scale-105"
+                          style={{
+                            backgroundColor: 'var(--bg-card)',
+                            color: 'var(--text-primary)',
+                          }}
+                        >
+                          <ExternalLink className="h-3.5 w-3.5" />
+                          View Project
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Label */}
+                    <div className="mt-4 text-center">
+                      <p
+                        className="text-sm font-semibold"
+                        style={{ color: 'var(--text-primary)' }}
+                      >
+                        Mobile
+                      </p>
+
+                      <p
+                        className="mt-1 font-mono text-[10px] uppercase tracking-wider"
+                        style={{ color: 'var(--text-muted)' }}
+                      >
+                        E-Shop Mobile UI
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ================= CENTER ================= */}
+                <div className="flex flex-col items-center justify-center">
+
+                  <div
+                    className="rounded-full px-4 py-2 text-xs font-semibold"
+                    style={{
+                      backgroundColor: 'var(--accent-bg)',
+                      color: 'var(--accent-text)',
+                      border: '1px solid var(--accent-border)',
+                    }}
+                  >
+                    1 codebase
+                  </div>
+
+                  <div
+                    className="my-3 flex items-center gap-2"
+                    style={{ color: 'var(--accent)' }}
+                  >
+                    <div
+                      className="h-px w-8"
+                      style={{ backgroundColor: 'var(--accent-border)' }}
+                    />
+
+                    <ArrowUpRight className="h-5 w-5" />
+
+                    <div
+                      className="h-px w-8"
+                      style={{ backgroundColor: 'var(--accent-border)' }}
+                    />
+                  </div>
+
+                  <span
+                    className="font-mono text-[10px] font-medium uppercase tracking-[0.16em]"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    responsive layout
+                  </span>
+                </div>
+
+                {/* ================= DESKTOP ================= */}
+                <div className="w-full">
+                  <div className="group">
+
+                    {/* Browser frame */}
+                    <div
+                      className="overflow-hidden rounded-2xl shadow-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl"
+                      style={{
+                        backgroundColor: 'var(--bg-card)',
+                        border: '1px solid var(--border)',
+                      }}
+                    >
+                      {/* Browser header */}
+                      <div
+                        className="flex h-9 items-center gap-2 px-3"
+                        style={{
+                          borderBottom: '1px solid var(--border)',
+                          backgroundColor: 'var(--bg-elevated)',
+                        }}
+                      >
+                        <span
+                          className="h-2.5 w-2.5 rounded-full"
+                          style={{ backgroundColor: 'var(--border-strong)' }}
+                        />
+                        <span
+                          className="h-2.5 w-2.5 rounded-full"
+                          style={{ backgroundColor: 'var(--border-strong)' }}
+                        />
+                        <span
+                          className="h-2.5 w-2.5 rounded-full"
+                          style={{ backgroundColor: 'var(--border-strong)' }}
+                        />
+
+                        <div
+                          className="ml-2 flex h-5 flex-1 items-center rounded-md px-3 font-mono text-[9px]"
+                          style={{
+                            backgroundColor: 'var(--bg-subtle)',
+                            color: 'var(--text-muted)',
+                          }}
+                        >
+                          eshop-nine-gilt.vercel.app
+                        </div>
+                      </div>
+
+                      {/* Screenshot */}
+                      <div className="relative overflow-hidden">
+                        <img
+                          src="/images/projects/e-shop/desktop.png"
+                          alt="E-Shop Desktop UI"
+                          className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.025]"
+                          loading="lazy"
+                        />
+
+                        {/* Hover overlay */}
+                        <div
+                          className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100"
+                          style={{
+                            backgroundColor: 'rgba(0,0,0,0.42)',
+                          }}
+                        >
+                          <a
+                            href={featuredProject.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-xl transition-all duration-300 hover:scale-105"
+                            style={{
+                              backgroundColor: 'var(--bg-card)',
+                              color: 'var(--text-primary)',
+                              border: '1px solid var(--border)',
+                            }}
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            View Live Project
+                            <ArrowUpRight className="h-4 w-4" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Label */}
+                    <div className="mt-4 flex items-center justify-between">
+                      <div>
+                        <p
+                          className="text-sm font-semibold"
+                          style={{ color: 'var(--text-primary)' }}
+                        >
+                          Desktop
+                        </p>
+
+                        <p
+                          className="mt-1 font-mono text-[10px] uppercase tracking-wider"
+                          style={{ color: 'var(--text-muted)' }}
+                        >
+                          E-Shop Desktop UI
+                        </p>
+                      </div>
+
+                      <a
+                        href={featuredProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5"
+                        style={{
+                          backgroundColor: 'var(--accent-bg)',
+                          color: 'var(--accent-text)',
+                          border: '1px solid var(--accent-border)',
+                        }}
+                      >
+                        View
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Screenshot */}
-          <div className="relative overflow-hidden">
-            <img
-              src="/images/projects/e-shop/desktop.png"
-              alt="E-Shop Desktop UI"
-              className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.025]"
-              loading="lazy"
-            />
-
-            {/* Hover overlay */}
-            <div
-              className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100"
-              style={{
-                backgroundColor: 'rgba(0,0,0,0.42)',
-              }}
-            >
-              <a
-                href={featuredProject.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-xl transition-all duration-300 hover:scale-105"
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                <ExternalLink className="h-4 w-4" />
-                View Live Project
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Label */}
-        <div className="mt-4 flex items-center justify-between">
-          <div>
-            <p
-              className="text-sm font-semibold"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              Desktop
-            </p>
-
-            <p
-              className="mt-1 font-mono text-[10px] uppercase tracking-wider"
-              style={{ color: 'var(--text-muted)' }}
-            >
-              E-Shop Desktop UI
-            </p>
-          </div>
-
-          <a
-            href={featuredProject.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5"
-            style={{
-              backgroundColor: 'var(--accent-bg)',
-              color: 'var(--accent-text)',
-              border: '1px solid var(--accent-border)',
-            }}
-          >
-            View
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            
 
             {/* --- Smaller screenshots: Mobile / Tablet / Web / Desktop --- */}
             <div className="px-5 py-10 sm:px-10" style={{ borderTop: '1px solid var(--border)' }}>
@@ -511,88 +623,88 @@ export default function Projects() {
               >
                 {t.projects.formFactors}
               </p>
-              
+
               {/* Updated grid layout mapping over 'images' arrays */}
-              
+
 
 
               {/* --- Form factors: 2 Columns layout --- */}
-<div className="px-5 py-10 sm:px-10" style={{ borderTop: '1px solid var(--border)' }}>
-  <p
-    className="font-mono text-xs uppercase tracking-wider"
-    style={{ color: 'var(--text-muted)' }}
-  >
-    {t.projects.formFactors}
-  </p>
-  
-  {/* Changed from lg:grid-cols-4 to sm:grid-cols-2 for a strict 2-column structure */}
-  <div className="mt-5 grid gap-6 sm:grid-cols-2">
-    {[
-      {
-        label: 'Mobile',
-        Icon: Smartphone,
-        images: [
-          '/images/projects/e-shop/bakong_qr.png',
-        ],
-      },
-      {
-        label: 'Tablet',
-        Icon: Tablet,
-        images: [
-          '/images/projects/e-shop/tablet.png',
-          '/images/projects/e-shop/tablet1.png',
-        ],
-      },
-      {
-        label: 'Desktop',
-        Icon: Monitor,
-        images: [
-          '/images/projects/e-shop/web.png',
-          '/images/projects/e-shop/web1.png',
-        ],
-      },
-      {
-        label: 'Desktop',
-        Icon: Monitor,
-        images: [
-          '/images/projects/e-shop/desktop.png',
-          '/images/projects/e-shop/desktop1.png',
-        ],
-      },
-    ].map(({ label, Icon, images }) => (
-      <div key={label} className="group/frm transition-transform duration-300 hover:-translate-y-1">
-        <div
-          className="mb-2 flex items-center gap-1.5 text-xs font-medium"
-          style={{ color: 'var(--text-secondary)' }}
-        >
-          <Icon className="h-3.5 w-3.5" style={{ color: 'var(--accent)' }} />
-          {label}
-        </div>
+              <div className="px-5 py-10 sm:px-10" style={{ borderTop: '1px solid var(--border)' }}>
+                <p
+                  className="font-mono text-xs uppercase tracking-wider"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {t.projects.formFactors}
+                </p>
 
-        {/* Multiple images stacked inside each column */}
-        <div className="flex flex-col gap-4">
-          {images.map((image, index) => (
-            <div
-              key={image}
-              className="overflow-hidden rounded-xl"
-              style={{
-                border: '1px solid var(--border)',
-                backgroundColor: 'var(--bg-elevated)',
-              }}
-            >
-              <img
-                src={image}
-                alt={`E-Shop ${label} UI ${index + 1}`}
-                className="h-auto w-full object-cover transition-transform duration-500 group-hover/frm:scale-[1.03]"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
+                {/* Changed from lg:grid-cols-4 to sm:grid-cols-2 for a strict 2-column structure */}
+                <div className="mt-5 grid gap-6 sm:grid-cols-2">
+                  {[
+                    {
+                      label: 'Mobile',
+                      Icon: Smartphone,
+                      images: [
+                        '/images/projects/e-shop/bakong_qr.png',
+                      ],
+                    },
+                    {
+                      label: 'Tablet',
+                      Icon: Tablet,
+                      images: [
+                        '/images/projects/e-shop/tablet.png',
+                        '/images/projects/e-shop/tablet1.png',
+                      ],
+                    },
+                    {
+                      label: 'Desktop',
+                      Icon: Monitor,
+                      images: [
+                        '/images/projects/e-shop/web.png',
+                        '/images/projects/e-shop/web1.png',
+                      ],
+                    },
+                    {
+                      label: 'Desktop',
+                      Icon: Monitor,
+                      images: [
+                        '/images/projects/e-shop/desktop.png',
+                        '/images/projects/e-shop/desktop1.png',
+                      ],
+                    },
+                  ].map(({ label, Icon, images }) => (
+                    <div key={label} className="group/frm transition-transform duration-300 hover:-translate-y-1">
+                      <div
+                        className="mb-2 flex items-center gap-1.5 text-xs font-medium"
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
+                        <Icon className="h-3.5 w-3.5" style={{ color: 'var(--accent)' }} />
+                        {label}
+                      </div>
+
+                      {/* Multiple images stacked inside each column */}
+                      <div className="flex flex-col gap-4">
+                        {images.map((image, index) => (
+                          <div
+                            key={image}
+                            className="overflow-hidden rounded-xl"
+                            style={{
+                              border: '1px solid var(--border)',
+                              backgroundColor: 'var(--bg-elevated)',
+                            }}
+                          >
+                            <img
+                              src={image}
+                              alt={`E-Shop ${label} UI ${index + 1}`}
+                              className="h-auto w-full object-cover transition-transform duration-500 group-hover/frm:scale-[1.03]"
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* --- Actions --- */}
@@ -610,14 +722,14 @@ export default function Projects() {
                 {t.projects.viewGithub}
               </a>
               <a
-  href={featuredProject.live}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="btn-ghost w-full sm:w-auto"
->
-  <ExternalLink className="h-4 w-4" />
-  {t.projects.viewProject}
-</a>
+                href={featuredProject.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost w-full sm:w-auto"
+              >
+                <ExternalLink className="h-4 w-4" />
+                {t.projects.viewProject}
+              </a>
               <span
                 className="ml-auto hidden font-mono text-[11px] sm:block lg:ml-auto"
                 style={{ color: 'var(--text-muted)' }}
@@ -627,123 +739,6 @@ export default function Projects() {
             </div>
           </article>
         </Reveal>
-
-        {/* Other projects */}
-        <div className="mt-14">
-          <Reveal>
-            <h3
-              className="text-lg font-semibold"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              {t.projects.moreWork}
-            </h3>
-          </Reveal>
-        <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  {otherProjects.map((p, i) => (
-    <Reveal key={p.name} delay={i * 100}>
-      <div
-        className="card-surface group flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1"
-        style={{
-          border: '1px solid var(--border)',
-          backgroundColor: 'var(--bg-card)',
-        }}
-      >
-        {/* --- Image / Preview Top Section --- */}
-        <div className="relative h-48 w-full overflow-hidden bg-[var(--bg-elevated)] border-b border-[var(--border)]">
-          {p.image ? (
-            <img
-              src={p.image}
-              alt={p.name}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center font-mono text-xs text-[var(--text-muted)]">
-              {p.name} Preview
-            </div>
-          )}
-          {p.tagLabel && (
-            <div 
-              className="absolute top-3 left-3 rounded-md px-2 py-1 font-mono text-[10px] shadow" 
-              style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
-            >
-              &lt;/{p.tagLabel}&gt;
-            </div>
-          )}
-        </div>
-
-        {/* --- Card Body --- */}
-        <div className="flex flex-1 flex-col p-6">
-          <h4
-            className="text-lg font-bold"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            {p.name}
-          </h4>
-          <p
-            className="mt-2 flex-1 text-sm leading-relaxed"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            {p.description}
-          </p>
-
-          {/* Tech Stack Tags */}
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {p.tech.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md px-2 py-0.5 font-mono text-[11px]"
-                style={{
-                  backgroundColor: 'var(--bg-elevated)',
-                  color: 'var(--text-muted)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* --- Action Buttons (Code & Demo / Swagger) --- */}
-          <div className="mt-6 grid grid-cols-2 gap-3 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
-            {p.github ? (
-              <a
-                href={p.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:opacity-90"
-                style={{
-                  backgroundColor: 'var(--bg-elevated)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                <Github className="h-4 w-4" />
-                Code
-              </a>
-            ) : (
-              <div />
-            )}
-
-            <a
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:opacity-90 ${!p.github ? 'col-span-2' : ''}`}
-              style={{
-                backgroundColor: 'var(--accent)',
-                color: '#fff',
-              }}
-            >
-              <ExternalLink className="h-4 w-4" />
-              {p.name.includes('API') ? 'Swagger' : 'Demo'}
-            </a>
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  ))}
-</div>
-        </div>
       </div>
     </section>
   );

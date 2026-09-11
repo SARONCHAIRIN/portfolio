@@ -99,12 +99,13 @@ export type OtherProject = {
 
 export const otherProjects: OtherProject[] = [
   {
-    name: 'Household Food System (API 1)',
+    name: 'Household Food System (API)',
     description: 'A robust backend REST API built with Node.js and Express, fully documented with Swagger UI.',
     tech: ['Node.js', 'Express', 'Swagger API', 'Render'],
     href: 'https://household-food-system.onrender.com/swagger-ui/',
     github: 'https://github.com/SARONCHAIRIN/household-food-system',
-     image: '/images/projects/food/household-food-api.png',
+    image: '/images/projects/food/household-food-api.png',
+    tagLabel: 'Household Food System(API)',
   },
   {
     name: 'Household Food System (Web)',
@@ -113,15 +114,18 @@ export const otherProjects: OtherProject[] = [
     href: 'https://household-food-system-web.vercel.app/',
     github: 'https://github.com/SARONCHAIRIN/household-food-system-web',
     image: '/images/projects/food/household-food-web.png',
+    tagLabel: 'Household Food System',
   },
-  
+
   {
-    name: 'More on GitHub',
-    description: 'Explore more of my projects on GitHub.',
-    image: '/images/projects/food/github_account.png',
-    github: 'https://github.com/SARONCHAIRIN',
+    name: 'E SHOP',
+    description: 'A cross-platform e-commerce application built with Flutter, featuring a responsive UI and state management using Provider and Riverpod.',
+    image: '/images/projects/food/eshop.png',
+    github: 'https://github.com/SARONCHAIRIN/project_e_shop',
     tech: ['Flutter', 'Dart', 'Cross-Platform'],
-    href: 'https://github.com/SARONCHAIRIN',
+    href: 'https://eshop-nine-gilt.vercel.app',
+    tagLabel: 'E-Shop',
+
   },
 ];
 
