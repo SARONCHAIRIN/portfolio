@@ -638,67 +638,111 @@ export default function Projects() {
               {t.projects.moreWork}
             </h3>
           </Reveal>
-          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {otherProjects.map((p, i) => (
-              <Reveal key={p.name} delay={i * 100}>
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card-surface group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-0.5"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent-border)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border)';
-                  }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div
-                      className="flex h-10 w-10 items-center justify-center rounded-xl"
-                      style={{
-                        backgroundColor: 'var(--accent-bg)',
-                        color: 'var(--accent-text)',
-                        boxShadow: 'inset 0 0 0 1px var(--accent-border)',
-                      }}
-                    >
-                      <Github className="h-5 w-5" />
-                    </div>
-                    <ArrowUpRight
-                      className="h-5 w-5 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      style={{ color: 'var(--text-muted)' }}
-                    />
-                  </div>
-                  <h4
-                    className="mt-4 text-base font-semibold"
-                    style={{ color: 'var(--text-primary)' }}
-                  >
-                    {p.name}
-                  </h4>
-                  <p
-                    className="mt-2 flex-1 text-sm leading-relaxed"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    {t.projects.moreWorkDesc}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-md px-2 py-0.5 font-mono text-[11px]"
-                        style={{
-                          backgroundColor: 'var(--bg-elevated)',
-                          color: 'var(--text-muted)',
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </a>
-              </Reveal>
+        <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {otherProjects.map((p, i) => (
+    <Reveal key={p.name} delay={i * 100}>
+      <div
+        className="card-surface group flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1"
+        style={{
+          border: '1px solid var(--border)',
+          backgroundColor: 'var(--bg-card)',
+        }}
+      >
+        {/* --- Image / Preview Top Section --- */}
+        <div className="relative h-48 w-full overflow-hidden bg-[var(--bg-elevated)] border-b border-[var(--border)]">
+          {p.image ? (
+            <img
+              src={p.image}
+              alt={p.name}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center font-mono text-xs text-[var(--text-muted)]">
+              {p.name} Preview
+            </div>
+          )}
+          {p.tagLabel && (
+            <div 
+              className="absolute top-3 left-3 rounded-md px-2 py-1 font-mono text-[10px] shadow" 
+              style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
+            >
+              &lt;/{p.tagLabel}&gt;
+            </div>
+          )}
+        </div>
+
+        {/* --- Card Body --- */}
+        <div className="flex flex-1 flex-col p-6">
+          <h4
+            className="text-lg font-bold"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            {p.name}
+          </h4>
+          <p
+            className="mt-2 flex-1 text-sm leading-relaxed"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            {p.description}
+          </p>
+
+          {/* Tech Stack Tags */}
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {p.tech.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md px-2 py-0.5 font-mono text-[11px]"
+                style={{
+                  backgroundColor: 'var(--bg-elevated)',
+                  color: 'var(--text-muted)',
+                  border: '1px solid var(--border)',
+                }}
+              >
+                {tech}
+              </span>
             ))}
           </div>
+
+          {/* --- Action Buttons (Code & Demo / Swagger) --- */}
+          <div className="mt-6 grid grid-cols-2 gap-3 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
+            {p.github ? (
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:opacity-90"
+                style={{
+                  backgroundColor: 'var(--bg-elevated)',
+                  color: 'var(--text-primary)',
+                  border: '1px solid var(--border)',
+                }}
+              >
+                <Github className="h-4 w-4" />
+                Code
+              </a>
+            ) : (
+              <div />
+            )}
+
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:opacity-90 ${!p.github ? 'col-span-2' : ''}`}
+              style={{
+                backgroundColor: 'var(--accent)',
+                color: '#fff',
+              }}
+            >
+              <ExternalLink className="h-4 w-4" />
+              {p.name.includes('API') ? 'Swagger' : 'Demo'}
+            </a>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  ))}
+</div>
         </div>
       </div>
     </section>

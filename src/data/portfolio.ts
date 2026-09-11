@@ -86,13 +86,40 @@ export const featuredProject = {
 
 export type OtherProject = {
   name: string;
+  description: string;
+  image: string;
   tech: string[];
   href: string;
+  github?: string;
+  backendRepo?: string;
+  swaggerUrl?: string;
+  tagLabel?: string;
 };
+
 
 export const otherProjects: OtherProject[] = [
   {
+    name: 'Household Food System (API 1)',
+    description: 'A robust backend REST API built with Node.js and Express, fully documented with Swagger UI.',
+    tech: ['Node.js', 'Express', 'Swagger API', 'Render'],
+    href: 'https://household-food-system.onrender.com/swagger-ui/',
+    github: 'https://github.com/SARONCHAIRIN/household-food-system',
+     image: '/images/projects/food/household-food-api.png',
+  },
+  {
+    name: 'Household Food System (Web)',
+    description: 'A responsive frontend platform for managing and tracking household food inventories.',
+    tech: ['React', 'Tailwind CSS', 'Vercel'],
+    href: 'https://household-food-system-web.vercel.app/',
+    github: 'https://github.com/SARONCHAIRIN/household-food-system-web',
+    image: '/images/projects/food/household-food-web.png',
+  },
+  
+  {
     name: 'More on GitHub',
+    description: 'Explore more of my projects on GitHub.',
+    image: '/images/projects/food/github_account.png',
+    github: 'https://github.com/SARONCHAIRIN',
     tech: ['Flutter', 'Dart', 'Cross-Platform'],
     href: 'https://github.com/SARONCHAIRIN',
   },
