@@ -1,4 +1,4 @@
-import { Wind, Server, Smartphone, Wrench } from 'lucide-react';
+import { Wind, Server, Smartphone, Wrench, GitBranch } from 'lucide-react';
 import { skillCategories, type SkillCategory } from '@/data/portfolio';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -9,6 +9,7 @@ const iconMap = {
   server: Server,
   platform: Smartphone,
   tools: Wrench,
+  devops: GitBranch,
 } as const;
 
 function CategoryCard({ category }: { category: SkillCategory }) {

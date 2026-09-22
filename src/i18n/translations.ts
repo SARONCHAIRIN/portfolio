@@ -7,6 +7,7 @@ export const translations = {
       about: 'About',
       skills: 'Skills',
       projects: 'Projects',
+      devops: 'DevOps',
       experience: 'Experience',
       education: 'Education',
       contact: 'Contact',
@@ -52,6 +53,7 @@ export const translations = {
         backend: 'Backend & APIs',
         platform: 'Cross-Platform Targets',
         tools: 'Tools & Workflow',
+        devops: 'DevOps & CI/CD',
       },
     },
     projects: {
@@ -88,6 +90,84 @@ export const translations = {
         'Responsive UI',
         'Adaptive Navigation',
       ],
+    },
+    devops: {
+      eyebrow: 'DevOps & CI/CD',
+      title: 'Automated CI/CD Workflows',
+      subtitle: 'Automating development, validation, build, and deployment through practical CI/CD workflows.',
+      description:
+        'Practical CI/CD automation integrated directly into this portfolio. Every push to GitHub can trigger Jenkins to install dependencies, run code-quality linters, check TypeScript types, and produce an optimized production build deployed to Vercel.',
+      workflowTitle: 'CI/CD Pipeline Flow',
+      workflowSubtitle: 'From commit to production deployment',
+      flow: {
+        github: 'GitHub Push',
+        githubDesc: 'Push to main branch',
+        webhook: 'GitHub Webhook',
+        webhookDesc: 'Triggers Jenkins job',
+        jenkins: 'Jenkins CI',
+        jenkinsDesc: 'Pipeline orchestration',
+        validate: 'Validation',
+        validateDesc: 'ESLint & Type Check',
+        build: 'Vite Build',
+        buildDesc: 'Production bundle',
+        deploy: 'Vercel Deploy',
+        deployDesc: 'Production release',
+        production: 'Production',
+        productionDesc: 'Live web application',
+      },
+      stagesTitle: 'Pipeline Stages',
+      stagesDesc: 'Six automated stages defined in the Jenkinsfile that validate code integrity and ensure reproducible builds.',
+      stages: {
+        checkout: {
+          title: 'Checkout',
+          desc: 'Fetch the latest application source code from GitHub.',
+        },
+        install: {
+          title: 'Install Dependencies',
+          desc: 'Install reproducible project dependencies using npm ci.',
+        },
+        lint: {
+          title: 'Code Quality',
+          desc: 'Run ESLint to detect code-quality and formatting issues.',
+        },
+        typecheck: {
+          title: 'Type Validation',
+          desc: 'Validate TypeScript types before creating the production build.',
+        },
+        build: {
+          title: 'Production Build',
+          desc: 'Generate an optimized production application using Vite.',
+        },
+        deploy: {
+          title: 'Deployment',
+          desc: 'Deploy the validated production build to Vercel.',
+        },
+      },
+      projectCard: {
+        tag: 'Automated Project',
+        title: 'Portfolio CI/CD Automation',
+        description:
+          'Implemented a Jenkins-based CI/CD workflow that connects GitHub changes with automated dependency installation, code-quality validation, TypeScript checking, production builds, and Vercel deployment.',
+        highlightsTitle: 'Automated Guarantees',
+        highlights: [
+          'Clean, reproducible builds with npm ci',
+          'Early bug detection with ESLint and TypeScript checks',
+          'Automated deployment to Vercel upon passing validation',
+          'Zero manual build intervention required',
+        ],
+        viewJenkinsfile: 'View Jenkinsfile',
+      },
+      pipelineAsCode: {
+        title: 'Pipeline as Code',
+        tag: 'Jenkinsfile',
+        description:
+          'The CI/CD workflow is defined using a Jenkinsfile stored alongside the application source code, allowing the pipeline configuration to remain version-controlled and reproducible.',
+      },
+      capabilities: {
+        title: 'Pipeline Capabilities',
+        subtitle: 'Automated verification steps implemented in this repository',
+      },
+      skillsTitle: 'DevOps & Tooling Capabilities',
     },
     experience: {
       eyebrow: 'Experience',
@@ -150,6 +230,7 @@ export const translations = {
       about: 'អំពីខ្ញុំ',
       skills: 'ជំនាញ',
       projects: 'គម្រោង',
+      devops: 'DevOps',
       experience: 'បទពិសោធន៍',
       education: 'ការសិក្សា',
       contact: 'ទំនាក់ទំនង',
@@ -195,6 +276,7 @@ export const translations = {
         backend: 'Backend & APIs',
         platform: 'Cross-Platform Targets',
         tools: 'ឧបករណ៍ និង Workflow',
+        devops: 'DevOps & CI/CD',
       },
     },
     projects: {
@@ -231,6 +313,84 @@ export const translations = {
         'Responsive UI',
         'Adaptive Navigation',
       ],
+    },
+    devops: {
+      eyebrow: 'DevOps & CI/CD',
+      title: 'ដំណើរការស្វ័យប្រវត្តិកម្ម CI/CD',
+      subtitle: 'ធ្វើស្វ័យប្រវត្តិកម្មការអភិវឌ្ឍ ការផ្ទៀងផ្ទាត់ ការ Build និងការដាក់ពង្រាយតាមរយៈ CI/CD Workflow ជាក់ស្តែង។',
+      description:
+        'ស្វ័យប្រវត្តិកម្ម CI/CD ជាក់ស្តែងដែលបានភ្ជាប់ជាមួយ Portfolio នេះផ្ទាល់។ រាល់ពេល Push កូដទៅ GitHub អាច Trigger Jenkins ដើម្បីដំឡើង Dependencies ពិនិត្យគុណភាពកូដ ផ្ទៀងផ្ទាត់ TypeScript Types និងបង្កើត Production Build ដែលដាក់ពង្រាយទៅ Vercel។',
+      workflowTitle: 'ដំណើរការ Pipeline CI/CD',
+      workflowSubtitle: 'ពី Commit ដល់ការដាក់ពង្រាយលើ Production',
+      flow: {
+        github: 'GitHub Push',
+        githubDesc: 'Push ទៅកាន់ main branch',
+        webhook: 'GitHub Webhook',
+        webhookDesc: 'Trigger ទៅកាន់ Jenkins job',
+        jenkins: 'Jenkins CI',
+        jenkinsDesc: 'ដំណើរការ Pipeline Orchestration',
+        validate: 'ការផ្ទៀងផ្ទាត់',
+        validateDesc: 'ESLint & Type Check',
+        build: 'Vite Build',
+        buildDesc: 'បង្កើត Production Bundle',
+        deploy: 'Vercel Deploy',
+        deployDesc: 'ដាក់ពង្រាយទៅកាន់ Production',
+        production: 'Production',
+        productionDesc: 'កម្មវិធី Live លើ Web',
+      },
+      stagesTitle: 'ដំណាក់កាលនៃ Pipeline',
+      stagesDesc: 'ដំណាក់កាលស្វ័យប្រវត្តិចំនួន 6 កំណត់ក្នុង Jenkinsfile ដើម្បីផ្ទៀងផ្ទាត់គុណភាពកូដ និងធានាការ Build ត្រឹមត្រូវ។',
+      stages: {
+        checkout: {
+          title: 'Checkout',
+          desc: 'ទាញយកកូដកម្មវិធីចុងក្រោយពី GitHub។',
+        },
+        install: {
+          title: 'ដំឡើង Dependencies',
+          desc: 'ដំឡើង Dependencies ដោយប្រើ npm ci ដើម្បីភាពជាក់លាក់។',
+        },
+        lint: {
+          title: 'គុណភាពកូដ',
+          desc: 'ដំណើរការ ESLint ដើម្បីពិនិត្យគុណភាពកូដ និង Formatting។',
+        },
+        typecheck: {
+          title: 'ការផ្ទៀងផ្ទាត់ Type',
+          desc: 'ផ្ទៀងផ្ទាត់ TypeScript Types មុនពេលបង្កើត Production Build។',
+        },
+        build: {
+          title: 'Production Build',
+          desc: 'បង្កើត Production Application ដែល Optimize ដោយប្រើ Vite។',
+        },
+        deploy: {
+          title: 'ការដាក់ពង្រាយ',
+          desc: 'ដាក់ពង្រាយ Production Build ដែលបានផ្ទៀងផ្ទាត់ទៅកាន់ Vercel។',
+        },
+      },
+      projectCard: {
+        tag: 'គម្រោងស្វ័យប្រវត្តិ',
+        title: 'ស្វ័យប្រវត្តិកម្ម CI/CD សម្រាប់ Portfolio',
+        description:
+          'បានបង្កើត CI/CD Workflow ដោយផ្អែកលើ Jenkins ដែលភ្ជាប់ការផ្លាស់ប្តូរកូដលើ GitHub ជាមួយការដំឡើង Dependency ស្វ័យប្រវត្តិ ការពិនិត្យគុណភាពកូដ ការពិនិត្យ TypeScript ការ Build និងការដាក់ពង្រាយទៅ Vercel។',
+        highlightsTitle: 'អត្ថប្រយោជន៍ស្វ័យប្រវត្តិកម្ម',
+        highlights: [
+          'Build ស្អាត និងជាក់លាក់ដោយ npm ci',
+          'រកឃើញបញ្ហាកូដលឿនដោយ ESLint និង TypeScript Check',
+          'ដាក់ពង្រាយទៅ Vercel ដោយស្វ័យប្រវត្តិពេលឆ្លងកាត់ការផ្ទៀងផ្ទាត់',
+          'មិនចាំបាច់មានការ Build ដោយដៃឡើយ',
+        ],
+        viewJenkinsfile: 'មើល Jenkinsfile',
+      },
+      pipelineAsCode: {
+        title: 'Pipeline as Code',
+        tag: 'Jenkinsfile',
+        description:
+          'CI/CD Workflow ត្រូវបានកំណត់ដោយប្រើ Jenkinsfile រក្សាទុកជាមួយ Source Code ដែលអនុញ្ញាតឱ្យ Pipeline Configuration ស្ថិតក្រោម Version Control និងដំណើរការបានដូចដើម។',
+      },
+      capabilities: {
+        title: 'សមត្ថភាព Pipeline',
+        subtitle: 'ជំហានផ្ទៀងផ្ទាត់ស្វ័យប្រវត្តិដែលបានអនុវត្តក្នុងគម្រោងនេះ',
+      },
+      skillsTitle: 'សមត្ថភាព DevOps និងឧបករណ៍',
     },
     experience: {
       eyebrow: 'បទពិសោធន៍',

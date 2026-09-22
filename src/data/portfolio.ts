@@ -12,25 +12,83 @@ export const profile = {
   resumeUrl: '/resume/CHHAIRIN-SARON-CV.pdf',
 };
 
-export type NavItem = { labelKey: 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'education' | 'contact'; href: string };
+export type NavItem = {
+  labelKey: 'home' | 'about' | 'skills' | 'projects' | 'devops' | 'experience' | 'education' | 'contact';
+  href: string;
+};
 
 export const navItems: NavItem[] = [
   { labelKey: 'home', href: '#home' },
   { labelKey: 'about', href: '#about' },
   { labelKey: 'skills', href: '#skills' },
   { labelKey: 'projects', href: '#projects' },
+  { labelKey: 'devops', href: '#devops' },
   { labelKey: 'experience', href: '#experience' },
   { labelKey: 'education', href: '#education' },
   { labelKey: 'contact', href: '#contact' },
 ];
 
+export type PipelineStage = {
+  id: string;
+  stepNumber: string;
+  icon: 'git' | 'package' | 'shield' | 'check' | 'cpu' | 'rocket';
+  key: 'checkout' | 'install' | 'lint' | 'typecheck' | 'build' | 'deploy';
+  command: string;
+};
+
+export const pipelineStages: PipelineStage[] = [
+  { id: 'checkout', stepNumber: '01', icon: 'git', key: 'checkout', command: 'checkout scm' },
+  { id: 'install', stepNumber: '02', icon: 'package', key: 'install', command: 'npm ci' },
+  { id: 'lint', stepNumber: '03', icon: 'shield', key: 'lint', command: 'npm run lint' },
+  { id: 'typecheck', stepNumber: '04', icon: 'check', key: 'typecheck', command: 'npm run typecheck' },
+  { id: 'build', stepNumber: '05', icon: 'cpu', key: 'build', command: 'npm run build' },
+  { id: 'deploy', stepNumber: '06', icon: 'rocket', key: 'deploy', command: 'npx vercel deploy --prod' },
+];
+
+export const devopsTechnologies = [
+  'Jenkins',
+  'Jenkinsfile',
+  'CI/CD',
+  'GitHub',
+  'GitHub Webhooks',
+  'Node.js',
+  'npm',
+  'ESLint',
+  'TypeScript',
+  'Vite',
+  'Vercel',
+];
+
+export const devopsSkills = [
+  'CI/CD',
+  'Jenkins Pipeline',
+  'Pipeline as Code',
+  'GitHub Webhooks',
+  'Automated Validation',
+  'Automated Build',
+  'Deployment Automation',
+  'Vercel Deployment',
+  'Git Workflow',
+];
+
+export const pipelineCapabilities = [
+  'Source Code Checkout',
+  'Deterministic Dependency Installation (npm ci)',
+  'Code Quality Linting (ESLint)',
+  'TypeScript Static Type Check',
+  'Optimized Vite Production Build',
+  'Automated Vercel Deployment',
+];
+
 export type SkillCategory = {
-  key: 'flutter' | 'backend' | 'platform' | 'tools';
-  icon: 'flutter' | 'server' | 'platform' | 'tools';
+  key: 'flutter' | 'backend' | 'platform' | 'tools' | 'devops';
+  icon: 'flutter' | 'server' | 'platform' | 'tools' | 'devops';
   skills: string[];
 };
 
+
 export const skillCategories: SkillCategory[] = [
+
   {
     key: 'flutter',
     icon: 'flutter',
@@ -46,11 +104,32 @@ export const skillCategories: SkillCategory[] = [
     icon: 'platform',
     skills: ['Android', 'iOS', 'Web', 'Windows', 'macOS', 'Linux'],
   },
+
+
   {
-    key: 'tools',
-    icon: 'tools',
-    skills: ['Git', 'GitHub'],
+    key: 'devops',
+    icon: 'devops',
+    skills: [
+      'Git',
+      'GitHub',
+      'Jenkins',
+      'Jenkins Pipeline',
+      'Jenkinsfile',
+      'CI/CD',
+      'GitHub Webhooks',
+      'Node.js',
+      'npm',
+      'ESLint',
+      'TypeScript',
+      'Vite',
+      'Vercel',
+      'Render',
+    ],
   },
+
+
+
+
 ];
 
 export const featuredProject = {
