@@ -15,8 +15,6 @@ import {
   ArrowDown,
   ExternalLink,
   Code2,
-  Copy,
-  Check,
 } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
