@@ -12,7 +12,6 @@ import {
   Layers,
   ArrowRight,
   ArrowDown,
-  ExternalLink,
   Code2,
 } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
