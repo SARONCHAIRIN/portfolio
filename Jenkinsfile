@@ -18,11 +18,9 @@ pipeline {
             steps {
                 sh '''
                     echo "===== Node ====="
-                    which node
                     node --version
 
                     echo "===== NPM ====="
-                    which npm
                     npm --version
                 '''
             }
@@ -73,8 +71,12 @@ pipeline {
                     )
                 ]) {
                     sh '''
-                        echo "===== Deploy to Vercel ====="
+                        set -e
 
+                        echo "===== Install Vercel CLI ====="
+                        npx vercel --version
+
+                        echo "===== Deploy to Vercel ====="
                         npx vercel deploy \
                             --prod \
                             --yes \
