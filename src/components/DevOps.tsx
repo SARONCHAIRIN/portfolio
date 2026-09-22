@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   GitBranch,
   Terminal,
@@ -35,72 +34,11 @@ const stageIconMap = {
   rocket: Rocket,
 } as const;
 
-const jenkinsfileSnippet = `pipeline {
-    agent any
 
-    environment {
-        // Node.js v24 environment configured on agent
-        PATH = "/usr/local/bin:/usr/bin:/bin"
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm ci'
-            }
-        }
-        stage('Lint') {
-            steps {
-                sh 'npm run lint'
-            }
-        }
-        stage('Type Check') {
-            steps {
-                sh 'npm run typecheck'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-        stage('Deploy to Vercel') {
-            steps {
-                // Secure credential binding for deployment
-                withCredentials([string(credentialsId: 'portfolio-vercel-token', variable: 'VERCEL_TOKEN')]) {
-                    sh 'npx vercel deploy --prod --yes --token="$VERCEL_TOKEN"'
-                }
-            }
-        }
-    }
-    post {
-        success {
-            echo 'Portfolio CI/CD pipeline deployed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed quality gate. Deployment aborted.'
-        }
-    }
-}`;
 
 export default function DevOps() {
   const { t } = useApp();
-  const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(jenkinsfileSnippet);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
 
   const workflowSteps = [
     {
@@ -661,8 +599,7 @@ export default function DevOps() {
                         rel="noreferrer noopener"
                         className="inline-flex items-center gap-1 text-[var(--accent-text)] hover:underline"
                       >
-                        GitHub File
-                        <ExternalLink className="h-3 w-3" />
+
                       </a>
                     </div>
                   </div>
