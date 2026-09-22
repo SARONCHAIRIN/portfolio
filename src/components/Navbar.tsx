@@ -47,12 +47,6 @@ export default function Navbar() {
       ...navItems.map((item) => item.href.replace('#', '')),
     ];
 
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null);
-
-    if (!sections.length) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleEntry = entries
@@ -72,7 +66,13 @@ export default function Navbar() {
       }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+
+      if (section !== null) {
+        observer.observe(section);
+      }
+    });
 
     return () => {
       observer.disconnect();
@@ -159,47 +159,42 @@ export default function Navbar() {
               Brand
           ========================== */}
           <a
-            href="#home"
             onClick={() => handleNavigation('#home')}
             className="group flex shrink-0 items-center gap-3"
             aria-label="Go to home"
           >
             <div
               className="
-                relative flex h-10 w-10 items-center
-                justify-center overflow-hidden rounded-xl
-                font-mono text-sm font-black
-                transition-all duration-300
-                group-hover:-translate-y-0.5
-                group-hover:scale-[1.03]
-              "
+      relative h-10 w-10 shrink-0
+      overflow-hidden rounded-xl
+      transition-all duration-300
+      group-hover:-translate-y-0.5
+      group-hover:scale-[1.05]
+    "
               style={{
-                color: 'var(--accent-text)',
-                background:
-                  'linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #ffffff))',
+                border: '1px solid var(--accent-border)',
                 boxShadow:
-                  '0 8px 24px color-mix(in srgb, var(--accent) 18%, transparent)',
+                  '0 6px 20px color-mix(in srgb, var(--accent) 18%, transparent)',
               }}
             >
-              CS
-
-              <span
+              <img
+                src="/images/profile/chhairin_profile.jpg"
+                alt="Chhairin profile"
                 className="
-                  absolute inset-x-1 bottom-1
-                  h-[1px] rounded-full opacity-50
-                "
-                style={{
-                  backgroundColor: 'currentColor',
-                }}
+        h-full w-full
+        object-cover object-center
+        transition-transform duration-300
+        group-hover:scale-110
+      "
               />
             </div>
 
             <div className="hidden flex-col sm:flex">
               <span
                 className="
-                  text-[14px] font-bold
-                  leading-none tracking-[0.04em]
-                "
+        text-[14px] font-bold
+        leading-none tracking-[0.04em]
+      "
                 style={{
                   color: 'var(--text-primary)',
                 }}
@@ -217,9 +212,9 @@ export default function Navbar() {
 
               <span
                 className="
-                  mt-1 text-[10px] font-medium
-                  uppercase tracking-[0.18em]
-                "
+        mt-1 text-[10px] font-medium
+        uppercase tracking-[0.18em]
+      "
                 style={{
                   color: 'var(--text-muted)',
                 }}
@@ -228,7 +223,6 @@ export default function Navbar() {
               </span>
             </div>
           </a>
-
           {/* =========================
               Desktop Navigation
           ========================== */}
